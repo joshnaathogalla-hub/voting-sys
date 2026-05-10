@@ -1,49 +1,108 @@
-import React, { useState } from "react";
-import "../styles.css";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles.css";   // ✅ use separate CSS file
 
-function VoteNow() {
-
-  const [message, setMessage] = useState("");
-
-  const handleVote = (candidate) => {
-    setMessage(`✅ You voted for ${candidate} successfully!`);
-  };
+function Home() {
+  const navigate = useNavigate();
 
   return (
-    <div className="vote-container">
+    <div className="home-container">
+        
 
-      <h1>Vote Now</h1>
+      {/* Navbar */}
+      <nav className="navbar">
+        <h2 className="logo">✔ VoteNow</h2>
 
-      <p>Select your favorite candidate.</p>
+        <div className="nav-links">
+          <a href="/">Home</a>
+          <a 
+  onClick={() => navigate("/how-it-works")} 
+  style={{ cursor: "pointer" }}
+>
+  How it Works
+</a>
+         <a 
+  onClick={() => navigate("/about")} 
+  style={{ cursor: "pointer" }}
+>
+  About
+</a>
+          <a 
+  onClick={() => navigate("/contact")} 
+  style={{ cursor: "pointer" }}
+>
+  Contact
+</a>
 
-      <div className="candidate-list">
+        </div>
+      </nav>
 
-        <div className="candidate-card">
-          <h3>Candidate 1</h3>
+      {/* Hero Section */}
+      <div className="hero">
 
-          <button onClick={() => handleVote("Candidate 1")}>
-            Vote
+        <div className="hero-left">
+
+          {/* ✅ BOX STYLE (UPDATED) */}
+          <div className="tag-pill">
+            ✔ SECURE & TRUSTED
+          </div>
+
+          <h1>
+            Your Vote. <br />
+            <span>Your Power.</span>
+          </h1>
+
+          <p className="desc">
+            VoteNow makes voting simple, secure, and accessible.
+            Your voice shapes the future.
+          </p>
+          <button 
+  className="admin-btn"
+  onClick={() => navigate("/admin-login")}
+>
+  Login as Admin
+</button>
+
+          <button
+            className="primary-btn"
+            onClick={() => navigate("/login")}
+          >
+            Login to Vote →
           </button>
+          <p>"Democracy evolves with technology-Online voting is its next step forward"</p>
         </div>
 
-        <div className="candidate-card">
-          <h3>Candidate 2</h3>
-
-          <button onClick={() => handleVote("Candidate 2")}>
-            Vote
-          </button>
+        <div className="hero-right">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="vote"
+          />
         </div>
-
       </div>
 
-      {message && (
-        <p className="success-message">
-          {message}
-        </p>
-      )}
+      {/* Features */}
+      <div className="features">
+        <div className="feature-card">
+          <h4>🔒 Secure</h4>
+          <p>Your data is protected with encryption.</p>
+        </div>
+
+        <div className="feature-card">
+          <h4>⚡ Easy to Use</h4>
+          <p>Simple steps to cast your vote.</p>
+        </div>
+
+        <div className="feature-card">
+          <h4>👥 Trusted</h4>
+          <p>Transparent and reliable voting system.</p>
+        </div>
+      </div>
 
     </div>
   );
 }
 
-export default VoteNow;
+export default Home;
+
+
+//fix errror and give me correct code 
