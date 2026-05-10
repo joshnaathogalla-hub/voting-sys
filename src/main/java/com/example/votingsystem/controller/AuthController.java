@@ -1,27 +1,28 @@
 package com.example.votingsystem.controller;
 
-import com.example.votingsystem.model.User;
-import com.example.votingsystem.service.UserService;
+import com.example.votingsystem.model.Candidate;
+import com.example.votingsystem.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/api/auth")
-public class AuthController {
+@CrossOrigin(origins = "*")
+@RequestMapping("/api/vote")
+public class VoteController {
 
     @Autowired
-    private UserService service;
+    private VoteService service;
 
-    @PostMapping("/register")
-    public User register(@RequestBody User user) {
-        return service.register(user);
+    @PostMapping("/cast")
+    public String vote(@RequestParam String voterId,
+                       @RequestParam Long candidateId) {
+        return service.castVote(voterId, candidateId);
     }
 
-    @PostMapping("/login")
-    public Optional<User> login(@RequestBody User user) {
-        return service.login(user.getEmail(), user.getPassword());
+    @GetMapping("/results")
+    public List<Candidate> results() {
+        return service.results();
     }
 }
