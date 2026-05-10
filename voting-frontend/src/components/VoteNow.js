@@ -4,6 +4,8 @@ import "../styles.css";
 
 function VoteNow() {
 
+  // updated version
+
   const navigate = useNavigate();
 
   const [votedIndex, setVotedIndex] = useState(null);
