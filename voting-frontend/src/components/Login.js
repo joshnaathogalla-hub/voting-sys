@@ -12,7 +12,7 @@ function Login() {
 
   const user = { email, password };
 
-  const res = await fetch("http://localhost:8080/api/auth/login", {
+  const res = await fetch("https://voting-sys-2.onrender.com/api/auth/login", { 
     method: "POST",
     headers: {
       "Content-Type": "application/json"
