@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "../styles.css";
 
-function Home() {
+function VoteNow() {
+
   const navigate = useNavigate();
+
+  // State for success message
+  const [message, setMessage] = useState("");
+
+  // Vote handler
+  const handleVote = (candidate) => {
+    setMessage(`✅ You voted for ${candidate} successfully!`);
+  };
 
   return (
     <div className="home-container">
@@ -29,43 +38,56 @@ function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Voting Section */}
       <div className="hero">
 
         <div className="hero-left">
 
-          {/* Tag */}
           <div className="tag-pill">
-            ✔ SECURE & TRUSTED
+            🗳 ONLINE VOTING
           </div>
 
           <h1>
-            Your Vote. <br />
-            <span>Your Power.</span>
+            Cast Your <br />
+            <span>Vote Securely</span>
           </h1>
 
           <p className="desc">
-            VoteNow makes voting simple, secure, and accessible.
-            Your voice shapes the future.
+            Select your favorite candidate and submit your vote safely.
           </p>
+
+          {/* Candidate Buttons */}
+          <button
+            className="primary-btn"
+            onClick={() => handleVote("Candidate 1")}
+          >
+            Vote Candidate 1
+          </button>
+
+          <br /><br />
 
           <button
             className="admin-btn"
-            onClick={() => navigate("/admin-login")}
+            onClick={() => handleVote("Candidate 2")}
           >
-            Login as Admin
+            Vote Candidate 2
           </button>
+
+          {/* Success Message */}
+          {message && (
+            <p style={{ marginTop: "20px", color: "green", fontWeight: "bold" }}>
+              {message}
+            </p>
+          )}
+
+          <br />
 
           <button
             className="primary-btn"
-            onClick={() => navigate("/login")}
+            onClick={() => navigate("/")}
           >
-            Login to Vote →
+            Back to Home
           </button>
-
-          <p>
-            "Democracy evolves with technology-Online voting is its next step forward"
-          </p>
 
         </div>
 
@@ -82,18 +104,18 @@ function Home() {
       <div className="features">
 
         <div className="feature-card">
-          <h4>🔒 Secure</h4>
-          <p>Your data is protected with encryption.</p>
+          <h4>🔒 Secure Voting</h4>
+          <p>Your vote is encrypted and protected.</p>
         </div>
 
         <div className="feature-card">
-          <h4>⚡ Easy to Use</h4>
-          <p>Simple steps to cast your vote.</p>
+          <h4>⚡ Fast Process</h4>
+          <p>Vote quickly with a smooth experience.</p>
         </div>
 
         <div className="feature-card">
-          <h4>👥 Trusted</h4>
-          <p>Transparent and reliable voting system.</p>
+          <h4>👥 Trusted Platform</h4>
+          <p>Transparent and reliable election system.</p>
         </div>
 
       </div>
@@ -102,4 +124,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default VoteNow;
