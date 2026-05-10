@@ -1,39 +1,31 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import "../styles.css";   // ✅ use separate CSS file
+import { useNavigate, Link } from "react-router-dom";
+import "../styles.css";
 
 function Home() {
   const navigate = useNavigate();
 
   return (
     <div className="home-container">
-        
 
       {/* Navbar */}
       <nav className="navbar">
         <h2 className="logo">✔ VoteNow</h2>
 
         <div className="nav-links">
-          <a href="#">Home</a>
-          <a 
-  onClick={() => navigate("/how-it-works")} 
-  style={{ cursor: "pointer" }}
->
-  How it Works
-</a>
-         <a 
-  onClick={() => navigate("/about")} 
-  style={{ cursor: "pointer" }}
->
-  About
-</a>
-          <a 
-  onClick={() => navigate("/contact")} 
-  style={{ cursor: "pointer" }}
->
-  Contact
-</a>
+          <Link to="/">Home</Link>
 
+          <Link to="/how-it-works">
+            How it Works
+          </Link>
+
+          <Link to="/about">
+            About
+          </Link>
+
+          <Link to="/contact">
+            Contact
+          </Link>
         </div>
       </nav>
 
@@ -42,7 +34,7 @@ function Home() {
 
         <div className="hero-left">
 
-          {/* ✅ BOX STYLE (UPDATED) */}
+          {/* Tag */}
           <div className="tag-pill">
             ✔ SECURE & TRUSTED
           </div>
@@ -56,12 +48,13 @@ function Home() {
             VoteNow makes voting simple, secure, and accessible.
             Your voice shapes the future.
           </p>
-          <button 
-  className="admin-btn"
-  onClick={() => navigate("/admin-login")}
->
-  Login as Admin
-</button>
+
+          <button
+            className="admin-btn"
+            onClick={() => navigate("/admin-login")}
+          >
+            Login as Admin
+          </button>
 
           <button
             className="primary-btn"
@@ -69,7 +62,11 @@ function Home() {
           >
             Login to Vote →
           </button>
-          <p>"Democracy evolves with technology-Online voting is its next step forward"</p>
+
+          <p>
+            "Democracy evolves with technology-Online voting is its next step forward"
+          </p>
+
         </div>
 
         <div className="hero-right">
@@ -78,10 +75,12 @@ function Home() {
             alt="vote"
           />
         </div>
+
       </div>
 
       {/* Features */}
       <div className="features">
+
         <div className="feature-card">
           <h4>🔒 Secure</h4>
           <p>Your data is protected with encryption.</p>
@@ -96,6 +95,7 @@ function Home() {
           <h4>👥 Trusted</h4>
           <p>Transparent and reliable voting system.</p>
         </div>
+
       </div>
 
     </div>
